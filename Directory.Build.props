@@ -1,0 +1,30 @@
+<Project>
+   <PropertyGroup>
+     <RepositoryUrl>https://github.com/Simpllist/Simpllist.Wrapless</RepositoryUrl>
+     <PackageUrl>https://github.com/Simpllist/Simpllist.Wrapless</PackageUrl>
+     <Authors>Simpllist</Authors>
+     <Company>Simpllist</Company>
+     <PackageIcon>simpllist.png</PackageIcon>
+     <PackageReadmeFile>README.md</PackageReadmeFile>
+     <RootNamespace>Simpllist</RootNamespace>
+     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+     <Nullable>enable</Nullable>
+     <LangVersion>latest</LangVersion>
+
+     <NoWarn>CS1591;IDE0290</NoWarn>
+     <GenerateDocumentationFile>True</GenerateDocumentationFile>
+
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\docs\simpllist.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>

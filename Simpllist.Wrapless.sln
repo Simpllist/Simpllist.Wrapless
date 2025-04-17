@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35707.178
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simpllist.Wrapless.Generator", "source\Simpllist.Wrapless.Generator\Simpllist.Wrapless.Generator.csproj", "{A9931D00-D6AB-4D4F-A115-8089C8345023}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".sln", ".sln", "{13B67FE1-11FC-446E-8B35-29A0A617C17F}"
+	ProjectSection(SolutionItems) = preProject
+		Directory.Build.props = Directory.Build.props
+		Directory.Packages.props = Directory.Packages.props
+		.github\workflows\dotnet-beta.yml = .github\workflows\dotnet-beta.yml
+		.github\workflows\dotnet-release.yml = .github\workflows\dotnet-release.yml
+		.github\workflows\dotnet-test.yml = .github\workflows\dotnet-test.yml
+		nuget.config = nuget.config
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simpllist.Wrapless.Targets", "source\Simpllist.Wrapless.Targets\Simpllist.Wrapless.Targets.csproj", "{0449BAE5-B18C-4F45-AA90-207E7C356C11}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simpllist.Wrapless.Module", "example\Simpllist.Wrapless.Module\Simpllist.Wrapless.Module.csproj", "{048B0177-7B87-42D5-BE52-E53E0C5FBD4F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simpllist.Wrapless.Compiler", "source\Simpllist.Wrapless.Compiler\Simpllist.Wrapless.Compiler.csproj", "{A5BD081D-FC70-4297-938A-37494349CDEE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A9931D00-D6AB-4D4F-A115-8089C8345023}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9931D00-D6AB-4D4F-A115-8089C8345023}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9931D00-D6AB-4D4F-A115-8089C8345023}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9931D00-D6AB-4D4F-A115-8089C8345023}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0449BAE5-B18C-4F45-AA90-207E7C356C11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0449BAE5-B18C-4F45-AA90-207E7C356C11}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0449BAE5-B18C-4F45-AA90-207E7C356C11}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0449BAE5-B18C-4F45-AA90-207E7C356C11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{048B0177-7B87-42D5-BE52-E53E0C5FBD4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{048B0177-7B87-42D5-BE52-E53E0C5FBD4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{048B0177-7B87-42D5-BE52-E53E0C5FBD4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{048B0177-7B87-42D5-BE52-E53E0C5FBD4F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5BD081D-FC70-4297-938A-37494349CDEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5BD081D-FC70-4297-938A-37494349CDEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5BD081D-FC70-4297-938A-37494349CDEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5BD081D-FC70-4297-938A-37494349CDEE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
