@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+
+  <PropertyGroup>
+    <ModuleExtension>.usp</ModuleExtension>
+    <CompilerVersion>__replaced_in_workflow__</CompilerVersion>
+    <ProduceReferenceAssembly>False</ProduceReferenceAssembly>
+  </PropertyGroup>
+
+  <!-- Configure the Dotnet Tool -->
+  <PropertyGroup>
+    <CompilerCommand>dotnet simpl</CompilerCommand>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <CompilerVersion>0.1.0</CompilerVersion>
+  </PropertyGroup>
+
+  <Target Name="InstallTools" BeforeTargets="SimpllistCompile">
+    <Message Importance="high" Text="Checking for module compiler dotnet tool updates $(CompilerVersion)" />
+    <Exec Command="dotnet tool install Simpllist.Wrapless.Compiler --version $(CompilerVersion) --create-manifest-if-needed --allow-downgrade" />
+  </Target>
+
+  <!-- Output Provided -->
+
+  <PropertyGroup>
+    <IsCustomOutputPath Condition="'$(OutputPath)' != '$(BaseOutputPath)bin\$(Configuration)\'">true</IsCustomOutputPath>
+  </PropertyGroup>
+
+  <!-- Build Release -->
+
+  <Target Name="SimpllistCompile" AfterTargets="Build" Condition="'$(Configuration)' == 'Release'">
+    <Message Importance="high" Text="----> Compiler Building $(OutputPath)\$(AssemblyName).dll ----> $(OutputPath)" Condition="'$(IsCustomOutputPath)' == 'true'"/>
+    <Exec Command="$(CompilerCommand) build -p $(OutputPath)\$(AssemblyName).dll -d $(OutputPath)" Condition="'$(IsCustomOutputPath)' == 'true'" />
+
+    <Message Importance="high" Text="----> Compiler Building $(MSBuildProjectDirectory)\$(OutputPath)$(AssemblyName).dll ----> $(MSBuildProjectDirectory)\$(OutputPath)" Condition="'$(IsCustomOutputPath)' != 'true'"/>
+    <Exec Command="$(CompilerCommand) build -p $(MSBuildProjectDirectory)\$(OutputPath)$(AssemblyName).dll -d $(MSBuildProjectDirectory)\$(OutputPath)" Condition="'$(IsCustomOutputPath)' != 'true'" />
+  </Target>
+
+  <!-- Custom Publish -->
+
+  <PropertyGroup>
+    <PublishDriverBin>bin/Driver</PublishDriverBin>
+    <PublishDriverVersion>version</PublishDriverVersion>
+  </PropertyGroup>
+
+  <Target Name="SimpllistPublish">
+    <Message Importance="high" Text="----> Compiling $(MSBuildProjectDirectory)\$(MSBuildProjectFile) ----> $(PublishDriverBin) $(PublishDriverVersion)"/>
+    <MSBuild Projects="$(MSBuildProjectDirectory\)$(MSBuildProjectFile)" Targets="Publish" Properties="Configuration=Release;Version=$(PublishDriverVersion);OutputPath=$(PublishDriverBin)" />
+  </Target>
+
+
+  <!-- Publish Target -->
+
+  <Target Name="PostPublishDriver" AfterTargets="Publish">
+
+    <Message Importance="high" Text="----> Compiling $(PublishDir)\$(AssemblyName).dll ----> $(PublishDir)" Condition="'$(IsCustomOutputPath)' == 'true'"/>
+
+  </Target>
+
+</Project>
