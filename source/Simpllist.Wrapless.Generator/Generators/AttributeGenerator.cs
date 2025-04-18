@@ -17,7 +17,7 @@ public class AttributeGenerator : IIncrementalGenerator
 
     private static void PostInitializationCallback(IncrementalGeneratorPostInitializationContext context)
     {
-        context.AddSource(InputAttribute.FileName, InputAttribute.Value);
         context.AddSource(ModuleAssemblyAttribute.FileName, ModuleAssemblyAttribute.Value);
+        context.AddSource(InputAttribute.FileName, InputAttribute.Value);
     }
 }

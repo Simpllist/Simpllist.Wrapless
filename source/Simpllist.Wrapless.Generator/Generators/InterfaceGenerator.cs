@@ -16,6 +16,6 @@ public class InterfaceGenerator : IIncrementalGenerator
 
     private static void PostInitializationCallback(IncrementalGeneratorPostInitializationContext context)
     {
-        context.AddSource(ModuleInterface.FileName, ModuleInterface.Value);
+        context.AddSource(ModuleInformationInterface.FileName, ModuleInformationInterface.Value);
     }
 }

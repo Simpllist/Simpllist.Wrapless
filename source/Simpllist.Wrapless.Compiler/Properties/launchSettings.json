@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Simpllist.Wrapless.Compiler": {
+      "commandName": "Project",
+      "commandLineArgs": "build --path \"C:\\dev\\Simpllist.Wrapless\\example\\Simpllist.Wrapless.Module\\bin\\Debug\\netstandard2.0\\Simpllist.Wrapless.Module.dll\""
+    }
+  }
+}
