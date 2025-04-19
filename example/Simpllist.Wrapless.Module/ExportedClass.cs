@@ -7,6 +7,6 @@ public class ExportedClass
     [Input]
     public void SetValue(bool value)
     {
-
+       
     }
 }

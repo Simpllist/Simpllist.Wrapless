@@ -12,6 +12,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".sln", ".sln", "{13B67FE1-1
 		.github\workflows\dotnet-beta.yml = .github\workflows\dotnet-beta.yml
 		.github\workflows\dotnet-release.yml = .github\workflows\dotnet-release.yml
 		.github\workflows\dotnet-test.yml = .github\workflows\dotnet-test.yml
+		example\module_template.usp = example\module_template.usp
 		nuget.config = nuget.config
 		README.md = README.md
 	EndProjectSection
@@ -21,6 +22,14 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simpllist.Wrapless.Module", "example\Simpllist.Wrapless.Module\Simpllist.Wrapless.Module.csproj", "{048B0177-7B87-42D5-BE52-E53E0C5FBD4F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simpllist.Wrapless.Compiler", "source\Simpllist.Wrapless.Compiler\Simpllist.Wrapless.Compiler.csproj", "{A5BD081D-FC70-4297-938A-37494349CDEE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{A292EC05-9640-4224-AA0C-F6691C9B3684}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{578AB0D7-1A98-4FDD-98DB-BEFD8593BEDD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "examples", "examples", "{5FDBDE89-5E96-4FE0-B4DC-BC77C64F8906}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simpllist.Wrapless.UnitTests", "tests\Simpllist.Wrapless.UnitTests\Simpllist.Wrapless.UnitTests.csproj", "{87140EB0-4EEC-43AE-B376-2DFC5DAAEB0F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -44,8 +53,19 @@ Global
 		{A5BD081D-FC70-4297-938A-37494349CDEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A5BD081D-FC70-4297-938A-37494349CDEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A5BD081D-FC70-4297-938A-37494349CDEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87140EB0-4EEC-43AE-B376-2DFC5DAAEB0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87140EB0-4EEC-43AE-B376-2DFC5DAAEB0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87140EB0-4EEC-43AE-B376-2DFC5DAAEB0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87140EB0-4EEC-43AE-B376-2DFC5DAAEB0F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A9931D00-D6AB-4D4F-A115-8089C8345023} = {A292EC05-9640-4224-AA0C-F6691C9B3684}
+		{0449BAE5-B18C-4F45-AA90-207E7C356C11} = {A292EC05-9640-4224-AA0C-F6691C9B3684}
+		{048B0177-7B87-42D5-BE52-E53E0C5FBD4F} = {5FDBDE89-5E96-4FE0-B4DC-BC77C64F8906}
+		{A5BD081D-FC70-4297-938A-37494349CDEE} = {A292EC05-9640-4224-AA0C-F6691C9B3684}
+		{87140EB0-4EEC-43AE-B376-2DFC5DAAEB0F} = {578AB0D7-1A98-4FDD-98DB-BEFD8593BEDD}
 	EndGlobalSection
 EndGlobal

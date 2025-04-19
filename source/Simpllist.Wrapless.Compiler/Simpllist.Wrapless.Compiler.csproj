@@ -5,15 +5,20 @@
     <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <PackAsTool>True</PackAsTool>
+    <ToolCommandName>simpl</ToolCommandName>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Cocona" />
+    <PackageReference Include="Dumpify" />
     <PackageReference Include="Serilog.Sinks.Console" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Services\" />
+    <ProjectReference Include="..\..\source\Simpllist.Wrapless.Generator\Simpllist.Wrapless.Generator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
   </ItemGroup>
+
 
 </Project>

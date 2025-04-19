@@ -1,4 +1,4 @@
-﻿namespace Simpllist.Attributes;
+﻿namespace Simpllist;
 
 internal static class Global
 {
