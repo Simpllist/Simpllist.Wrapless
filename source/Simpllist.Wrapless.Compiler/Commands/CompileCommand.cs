@@ -1,46 +1,21 @@
 ﻿using Cocona;
 using Microsoft.Extensions.Logging;
-using Simpllist.Builder;
-using System.Reflection;
-using System.Text;
+using Simpllist.Services;
 
 namespace Simpllist.Commands;
 
-public sealed class BuildCommand
-{
-
-    [Command("build", Aliases = new string[] { "b" }, Description = "Complies and creates the SIMPL+ wrapper from your C# source code")]
-    public async Task CreateDriver(
-        [FromService] ILogger<CompileCommand> logger,
-        [Option(
-            shortName: 'p',
-            Description = "the assembly path",
-            ValueName = "path")] string path,
-        [Option(
-            shortName: 'o',
-            Description = "the output path for the compiled SIMPL+ wrapper",
-            ValueName = "output")] string? destination)
-    {
-
-        logger.LogInformation("Executed Command");
-        var builder = new StringBuilder();
-
-        var directory = new FileInfo(path).Directory; 
-        var assembly = Assembly.LoadFrom(path);
-
-        builder.AppendInformationBuilder(assembly);
-
-        await File.WriteAllTextAsync(Path.Combine(directory!.FullName, "blah.usp"), builder!.ToString());
-        
-    }
-}
-
 public sealed class CompileCommand
 {
+    private readonly ILogger<CompileCommand> _logger;
+    private readonly Func<string, SimplPlusCompiler> _compilerFactory;
 
+    public CompileCommand(ILogger<CompileCommand> logger, Func<string, SimplPlusCompiler> compilerFactory)
+    {
+        _logger = logger;
+        _compilerFactory = compilerFactory;
+    }
     [Command("compile", Aliases = new string[] { "c" }, Description = "Complies the generated Simpl Plus Wrapper")]
     public async Task CreateDriver(
-        [FromService] ILogger<CompileCommand> logger,
         [Option(
             shortName: 'p',
             Description = "the usp file path",
@@ -51,15 +26,24 @@ public sealed class CompileCommand
             ValueName = "output")] string? destination)
     {
 
-        logger.LogInformation("Executed Command");
-        var builder = new StringBuilder();
+        if (!path.EndsWith(".usp"))
+        {
+            _logger.LogCritical("Invalid SIMPL USP File {path}", path);
+            Environment.Exit(ExitCodes.InvalidFileExtension);
+        }
 
-        var directory = new FileInfo(path).Directory; 
-        var assembly = Assembly.LoadFrom(path);
+        _logger.LogInformation("Compiling SIMPL Plus USP {path}", path);
 
-        builder.AppendInformationBuilder(assembly);
+        if (!File.Exists(path))
+        {
+            _logger.LogCritical("File not found {path}", path);
+            Environment.Exit(ExitCodes.FileNotFound);
+        }
 
-        await File.WriteAllTextAsync(Path.Combine(directory!.FullName, "blah.usp"), builder!.ToString());
-        
+        using var compiler = _compilerFactory(path);
+
+        var exitCode = await compiler.CompileSimplPlusModule();
+
+        Environment.Exit(exitCode);
     }
 }

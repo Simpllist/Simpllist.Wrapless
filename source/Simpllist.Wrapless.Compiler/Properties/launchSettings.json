@@ -1,6 +1,14 @@
 {
   "profiles": {
-    "Simpllist.Wrapless.Compiler": {
+    "WSL": {
+      "commandName": "WSL2",
+      "distributionName": ""
+    },
+    "SimplPlus Compile": {
+      "commandName": "Project",
+      "commandLineArgs": "compile --path \"C:\\dev\\Simpllist.Wrapless\\example\\Simpllist.Wrapless.Module\\bin\\Debug\\netstandard2.0\\blah.usp\""
+    },
+    "SimplPlus Create": {
       "commandName": "Project",
       "commandLineArgs": "build --path \"C:\\dev\\Simpllist.Wrapless\\example\\Simpllist.Wrapless.Module\\bin\\Debug\\netstandard2.0\\Simpllist.Wrapless.Module.dll\""
     }

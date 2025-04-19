@@ -1,6 +1,7 @@
 ﻿using Cocona;
 using Microsoft.Extensions.DependencyInjection;
 using Simpllist.Commands;
+using Simpllist.Services;
 
 try
 {
@@ -8,8 +9,16 @@ try
 
     builder.Services.AddLogging();
 
-    var app = CoconaApp.CreateBuilder().Build();
+    builder.Services.AddTransient<Func<string, SimplPlusCompiler>>(_ =>
+    {
+        return Factory;
 
+        SimplPlusCompiler Factory(string path) => new SimplPlusCompiler(path);
+    });
+
+    var app = builder.Build();
+
+    app.AddCommands<BuildCommand>();
     app.AddCommands<CompileCommand>();
 
     app.Run();
