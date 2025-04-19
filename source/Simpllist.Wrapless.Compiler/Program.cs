@@ -1,5 +1,7 @@
 ﻿using Cocona;
+using Dumpify;
 using Microsoft.Extensions.DependencyInjection;
+using Simpllist;
 using Simpllist.Commands;
 using Simpllist.Services;
 
@@ -27,6 +29,6 @@ try
 }
 catch(Exception ex)
 {
-    Console.WriteLine(ex);
-    return -1;
+    ex.DumpConsole();
+    return ExitCodes.Exception;
 }
