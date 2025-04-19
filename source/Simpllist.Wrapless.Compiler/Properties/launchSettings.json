@@ -6,11 +6,11 @@
     },
     "SimplPlus Compile": {
       "commandName": "Project",
-      "commandLineArgs": "compile --path \"C:\\dev\\Simpllist.Wrapless\\example\\Simpllist.Wrapless.Module\\bin\\Debug\\netstandard2.0\\blah.usp\""
+      "commandLineArgs": "compile --path \"C:\\dev\\Simpllist.Wrapless\\example\\Simpllist.Wrapless.Module\\bin\\Debug\\net472\\blah.usp\""
     },
     "SimplPlus Create": {
       "commandName": "Project",
-      "commandLineArgs": "build --path \"C:\\dev\\Simpllist.Wrapless\\example\\Simpllist.Wrapless.Module\\bin\\Debug\\netstandard2.0\\Simpllist.Wrapless.Module.dll\""
+      "commandLineArgs": "build --path \"C:\\dev\\Simpllist.Wrapless\\example\\Simpllist.Wrapless.Module\\bin\\Debug\\net472\\Simpllist.Wrapless.Module.dll\""
     }
   }
 }
