@@ -1,14 +1,17 @@
-﻿using System.Reflection;
-using Cocona;
-using Serilog;
-using Simpllist.Wrapless;
+﻿using Cocona;
+using Microsoft.Extensions.Logging;
+using Simpllist.Builder;
+using System.Reflection;
+using System.Text;
 
 namespace Simpllist.Commands;
 
-public sealed class CompileCommand
+public sealed class BuildCommand
 {
+
     [Command("build", Aliases = new string[] { "b" }, Description = "Complies and creates the SIMPL+ wrapper from your C# source code")]
     public async Task CreateDriver(
+        [FromService] ILogger<CompileCommand> logger,
         [Option(
             shortName: 'p',
             Description = "the assembly path",
@@ -18,26 +21,45 @@ public sealed class CompileCommand
             Description = "the output path for the compiled SIMPL+ wrapper",
             ValueName = "output")] string? destination)
     {
-        
-        //logger.Information("Executed Command");
-        
+
+        logger.LogInformation("Executed Command");
+        var builder = new StringBuilder();
+
         var directory = new FileInfo(path).Directory; 
         var assembly = Assembly.LoadFrom(path);
 
-        var moduleInformationType = assembly
-            .GetTypes()
-            .FirstOrDefault(t => t.IsClass && t.GetInterface("ISimplPlusModuleInformation") != null);
+        builder.AppendInformationBuilder(assembly);
 
-        if (moduleInformationType is null)
-        {
-            return;
-        }
+        await File.WriteAllTextAsync(Path.Combine(directory!.FullName, "blah.usp"), builder!.ToString());
+        
+    }
+}
 
-        var info = Activator.CreateInstance(moduleInformationType);
+public sealed class CompileCommand
+{
 
-        if (info is ISimplPlusModuleInformation builder)
-        {
-            await File.WriteAllTextAsync(Path.Combine(directory!.FullName, "blah.usp"), builder.Builder.ToString());
-        }
+    [Command("compile", Aliases = new string[] { "c" }, Description = "Complies the generated Simpl Plus Wrapper")]
+    public async Task CreateDriver(
+        [FromService] ILogger<CompileCommand> logger,
+        [Option(
+            shortName: 'p',
+            Description = "the usp file path",
+            ValueName = "path")] string path,
+        [Option(
+            shortName: 'o',
+            Description = "the output path for the compiled SIMPL+ wrapper",
+            ValueName = "output")] string? destination)
+    {
+
+        logger.LogInformation("Executed Command");
+        var builder = new StringBuilder();
+
+        var directory = new FileInfo(path).Directory; 
+        var assembly = Assembly.LoadFrom(path);
+
+        builder.AppendInformationBuilder(assembly);
+
+        await File.WriteAllTextAsync(Path.Combine(directory!.FullName, "blah.usp"), builder!.ToString());
+        
     }
 }

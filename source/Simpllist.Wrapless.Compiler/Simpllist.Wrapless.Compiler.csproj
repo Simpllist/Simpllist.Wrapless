@@ -12,15 +12,12 @@
 
   <ItemGroup>
     <PackageReference Include="Cocona" />
+    <PackageReference Include="Dumpify" />
     <PackageReference Include="Serilog.Sinks.Console" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Services\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\source\Simpllist.Wrapless.Generator\Simpllist.Wrapless.Generator.csproj"  OutputItemType="Analyzer" ReferenceOutputAssembly="false"  />
+    <ProjectReference Include="..\..\source\Simpllist.Wrapless.Generator\Simpllist.Wrapless.Generator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
   </ItemGroup>
 
 

@@ -1,16 +1,12 @@
 ﻿using Cocona;
 using Microsoft.Extensions.DependencyInjection;
-using Serilog;
 using Simpllist.Commands;
 
 try
 {
     var builder = CoconaApp.CreateBuilder();
 
-    builder.Services.AddSingleton((c) =>
-        new LoggerConfiguration()
-            .WriteTo.Console()
-            .CreateLogger());
+    builder.Services.AddLogging();
 
     var app = CoconaApp.CreateBuilder().Build();
 
