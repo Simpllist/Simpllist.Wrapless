@@ -5,7 +5,7 @@ namespace Simpllist.Builder;
 
 public static class InformationExtensions
 {
-    private const string SimplPlusModuleInformationType = "Simpllist.Wrapless.ISimplPlusModuleInformation";
+    private const string SimplPlusModuleInformationType = "Simpllist.Wrapless.ILibraryInformation";
 
     public static StringBuilder AppendInformationBuilder(this StringBuilder rootBuilder, Assembly assembly)
     {
@@ -21,14 +21,16 @@ public static class InformationExtensions
         }
 
         var info = Activator.CreateInstance(moduleInformationType);
-        var build = moduleInformationType.GetProperty("Builder");
+        var comments = moduleInformationType.GetProperty("CommentsBuilder");
+        var includes = moduleInformationType.GetProperty("IncludeBuilder");
 
-        if (build == null)
+        if (comments == null || includes == null)
         {
             return rootBuilder;
         }
 
-        var builder = build.GetValue(info) as StringBuilder;
-        return rootBuilder.Append(builder);
+        var commentsBuilder = comments.GetValue(info) as StringBuilder;
+        var includesBuilder = includes.GetValue(info) as StringBuilder;
+        return rootBuilder.Append(commentsBuilder).Append(includesBuilder);
     }
 }

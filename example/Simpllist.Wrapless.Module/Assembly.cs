@@ -1,9 +1,7 @@
-﻿
-using System.Text;
-using Simpllist.Wrapless;
+﻿using Simpllist.Wrapless;
 
-[assembly: ModuleAssembly(
-    "Example",
+[assembly: LibraryAssembly(
+    "Simpllist.Wrapless.Module",
     "Simpllist",
     "Wrapless",
     "Eric Williams",

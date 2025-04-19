@@ -5,7 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\source\Simpllist.Wrapless.Generator\Simpllist.Wrapless.Generator.csproj"  OutputItemType="Analyzer" ReferenceOutputAssembly="false"  />
+    <PackageReference Include="Crestron.SimplSharp.SDK.Library" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\source\Simpllist.Wrapless.Generator\Simpllist.Wrapless.Generator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
   </ItemGroup>
 
 </Project>

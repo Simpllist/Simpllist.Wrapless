@@ -1,7 +1,5 @@
 ﻿using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.CSharp;
 using Simpllist.Attributes;
-using System.Collections.Generic;
 
 namespace Simpllist.Generators;
 
@@ -17,7 +15,7 @@ public class AttributeGenerator : IIncrementalGenerator
 
     private static void PostInitializationCallback(IncrementalGeneratorPostInitializationContext context)
     {
-        context.AddSource(ModuleAssemblyAttribute.FileName, ModuleAssemblyAttribute.Value);
+        context.AddSource(LibraryAssemblyAttribute.FileName, LibraryAssemblyAttribute.Value);
         context.AddSource(InputAttribute.FileName, InputAttribute.Value);
     }
 }

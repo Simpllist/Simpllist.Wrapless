@@ -15,7 +15,7 @@ try
     {
         return Factory;
 
-        SimplPlusCompiler Factory(string path) => new SimplPlusCompiler(path);
+        SimplPlusCompiler Factory(string path) => new (path);
     });
 
     var app = builder.Build();
