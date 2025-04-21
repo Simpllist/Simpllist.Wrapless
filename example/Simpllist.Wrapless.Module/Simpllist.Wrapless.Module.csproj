@@ -2,10 +2,15 @@
 
   <PropertyGroup>
     <TargetFramework>net472</TargetFramework>
+    <IsPackable>false</IsPackable>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Crestron.SimplSharp.SDK.Library" />
+    <!--
+    <PackageReference Include="Simpllist.Wrapless.Targets" />
+    
+    -->
   </ItemGroup>
 
   <ItemGroup>
