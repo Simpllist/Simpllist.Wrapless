@@ -8,7 +8,7 @@
     <Description>Automated Crestron SIMPL+ wrapper generator.</Description>
     <PackageProjectUrl>https://github.com/Simpllist/Simpllist.Wrapless/</PackageProjectUrl>
     <PackageTags>Crestron;SimplSharp;</PackageTags>
-    <Version>1.1.1</Version>
+    <Version>1.1.2</Version>
     <PackageOutputPath>..\..\release</PackageOutputPath>
   </PropertyGroup>
 

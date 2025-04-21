@@ -7,10 +7,8 @@
 
   <ItemGroup>
     <PackageReference Include="Crestron.SimplSharp.SDK.Library" />
-    <!--
     <PackageReference Include="Simpllist.Wrapless.Targets" />
-    
-    -->
+
   </ItemGroup>
 
   <ItemGroup>

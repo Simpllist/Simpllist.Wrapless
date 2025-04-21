@@ -13,7 +13,7 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <CompilerVersion>0.1.0</CompilerVersion>
+    <CompilerVersion>0.1.0-14-build-targets.1</CompilerVersion>
   </PropertyGroup>
 
   <Target Name="InstallTools" BeforeTargets="SimpllistCompile">

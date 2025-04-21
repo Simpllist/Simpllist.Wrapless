@@ -65,8 +65,8 @@ jobs:
     - name: Create Release
       uses: ncipollo/release-action@v1.14.0
       with:
-        tag: ${{ needs.build.outputs.Version }}
-        name: Release ${{ needs.build.outputs.Version }}
+        tag: ${{ needs.build.outputs.SemVer }}
+        name: Release ${{ needs.build.outputs.SemVer }}
         body: Released via github actions workflow, see repository README.md
         generateReleaseNotes: true
         artifacts: "bin/nugetPackages/*.nupkg"  
