@@ -9,7 +9,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".sln", ".sln", "{13B67FE1-1
 	ProjectSection(SolutionItems) = preProject
 		Directory.Build.props = Directory.Build.props
 		Directory.Packages.props = Directory.Packages.props
-		.github\workflows\dotnet-beta.yml = .github\workflows\dotnet-beta.yml
 		.github\workflows\dotnet-release.yml = .github\workflows\dotnet-release.yml
 		.github\workflows\dotnet-test.yml = .github\workflows\dotnet-test.yml
 		example\module_template.usp = example\module_template.usp

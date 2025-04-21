@@ -18,7 +18,17 @@
 
   <Target Name="InstallTools" BeforeTargets="SimpllistCompile">
     <Message Importance="high" Text="Checking for module compiler dotnet tool updates $(CompilerVersion)" />
-    <Exec Command="dotnet tool install Simpllist.Wrapless.Compiler --version $(CompilerVersion) --create-manifest-if-needed --allow-downgrade" />
+
+    <!-- Check if tool is installed and set a property -->
+    <Exec Command="dotnet tool list --local | findstr Simpllist.Wrapless.Compiler" IgnoreExitCode="true">
+      <Output TaskParameter="ExitCode" PropertyName="ToolFoundExitCode" />
+    </Exec>
+
+    <Message Importance="high" Text="dotnet tool list exit code: $(ToolFoundExitCode)" />
+
+    <Exec Command="dotnet tool install Simpllist.Wrapless.Compiler --version $(CompilerVersion) --create-manifest-if-needed --allow-downgrade" 
+          Condition="'$(ToolFoundExitCode)' != '0'" />
+
   </Target>
 
   <!-- Output Provided -->
@@ -29,7 +39,7 @@
 
   <!-- Build Release -->
 
-  <Target Name="SimpllistCompile" AfterTargets="Build" Condition="'$(Configuration)' == 'Release'">
+  <Target Name="SimpllistCompile" AfterTargets="SimplSharpPostProcess" Condition="'$(Configuration)' == 'Release'">
     <Message Importance="high" Text="----> Compiler Building $(OutputPath)\$(AssemblyName).dll ----> $(OutputPath)" Condition="'$(IsCustomOutputPath)' == 'true'"/>
     <Exec Command="$(CompilerCommand) build -p $(OutputPath)\$(AssemblyName).dll -d $(OutputPath)" Condition="'$(IsCustomOutputPath)' == 'true'" />
 
