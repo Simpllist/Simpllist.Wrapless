@@ -11,6 +11,9 @@ try
 
     builder.Services.AddLogging();
 
+    // TODO: cancel token when terminal exist so we can stop compilations on large directories with several .usp files
+    builder.Services.AddSingleton<CancellationTokenSource>(_ => new CancellationTokenSource(TimeSpan.FromMinutes(2)));
+
     builder.Services.AddTransient<Func<string, SimplPlusCompiler>>(_ =>
     {
         return Factory;
@@ -18,9 +21,13 @@ try
         SimplPlusCompiler Factory(string path) => new (path);
     });
 
+    builder.Services.AddTransient<SimplPlusFileCompiler>();
+    builder.Services.AddTransient<SimplPlusDirectoryCompiler>();
+
     var app = builder.Build();
 
     app.AddCommands<BuildCommand>();
+    app.AddCommands<CleanCommand>();
     app.AddCommands<CompileCommand>();
 
     app.Run();

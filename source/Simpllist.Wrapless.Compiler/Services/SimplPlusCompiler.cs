@@ -2,13 +2,21 @@
 using System.Diagnostics;
 
 namespace Simpllist.Services;
-public class SimplPlusCompiler : IDisposable
+
+/// <summary>
+/// PInvokes the simpl+ compiler to generate a binary file for SIMPL Windows.
+/// </summary>
+public sealed class SimplPlusCompiler : IDisposable
 {
     private readonly string _userPlusModulePath;
     private readonly Process _process;
 
     private readonly string _fullExecutablePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86), @"Crestron\Simpl\SPlusCC.exe");
     
+    /// <summary>
+    /// Creates an instance of the process with the file path to the USP file
+    /// </summary>
+    /// <param name="userPlusModulePath"></param>
     public SimplPlusCompiler(string userPlusModulePath)
     {
         _userPlusModulePath = userPlusModulePath;
@@ -31,9 +39,11 @@ public class SimplPlusCompiler : IDisposable
         _process.Exited += Process_Exited;
     }
 
-    
-
-    public async Task<int> CompileSimplPlusModule()
+    /// <summary>
+    /// Executes the process and return the status code
+    /// </summary>
+    /// <returns>The SIMPL+ process status code.</returns>
+    public async Task<int> CompileSimplPlusModule(CancellationToken token)
     {
         var startInfo = new ProcessStartInfo(_fullExecutablePath,
         [
@@ -46,7 +56,7 @@ public class SimplPlusCompiler : IDisposable
         _process.StartInfo = startInfo;
 
         _process.Start();
-        await _process.WaitForExitAsync();
+        await _process.WaitForExitAsync(token);
 
         return _process.ExitCode;
     }

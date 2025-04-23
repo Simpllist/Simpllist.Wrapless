@@ -39,32 +39,32 @@
 
   <!-- Build Release -->
 
-  <Target Name="SimpllistCompile" AfterTargets="SimplSharpPostProcess" Condition="'$(Configuration)' == 'Release'">
+  <Target Name="SimpllistCompile" AfterTargets="SimplSharpPostProcess" >
     <Message Importance="high" Text="----> Compiler Building $(OutputPath)\$(AssemblyName).dll ----> $(OutputPath)" Condition="'$(IsCustomOutputPath)' == 'true'"/>
-    <Exec Command="$(CompilerCommand) build -p $(OutputPath)\$(AssemblyName).dll -d $(OutputPath)" Condition="'$(IsCustomOutputPath)' == 'true'" />
+    <Exec Command="$(CompilerCommand) build -p $(OutputPath)\$(AssemblyName).dll -o $(OutputPath)" Condition="'$(IsCustomOutputPath)' == 'true'" />
 
     <Message Importance="high" Text="----> Compiler Building $(MSBuildProjectDirectory)\$(OutputPath)$(AssemblyName).dll ----> $(MSBuildProjectDirectory)\$(OutputPath)" Condition="'$(IsCustomOutputPath)' != 'true'"/>
-    <Exec Command="$(CompilerCommand) build -p $(MSBuildProjectDirectory)\$(OutputPath)$(AssemblyName).dll -d $(MSBuildProjectDirectory)\$(OutputPath)" Condition="'$(IsCustomOutputPath)' != 'true'" />
+    <Exec Command="$(CompilerCommand) build -p $(MSBuildProjectDirectory)\$(OutputPath)$(AssemblyName).dll -o $(MSBuildProjectDirectory)\$(OutputPath)" Condition="'$(IsCustomOutputPath)' != 'true'" />
   </Target>
 
   <!-- Custom Publish -->
 
   <PropertyGroup>
-    <PublishDriverBin>bin/Driver</PublishDriverBin>
+    <PublishSimplBin>bin/usrplus</PublishSimplBin>
     <PublishDriverVersion>version</PublishDriverVersion>
   </PropertyGroup>
 
   <Target Name="SimpllistPublish">
-    <Message Importance="high" Text="----> Compiling $(MSBuildProjectDirectory)\$(MSBuildProjectFile) ----> $(PublishDriverBin) $(PublishDriverVersion)"/>
-    <MSBuild Projects="$(MSBuildProjectDirectory\)$(MSBuildProjectFile)" Targets="Publish" Properties="Configuration=Release;Version=$(PublishDriverVersion);OutputPath=$(PublishDriverBin)" />
+    <Message Importance="high" Text="----> Compiling $(MSBuildProjectDirectory)\$(MSBuildProjectFile) ----> $(PublishSimplBin) $(PublishDriverVersion)"/>
+    <MSBuild Projects="$(MSBuildProjectDirectory\)$(MSBuildProjectFile)" Targets="Publish" Properties="Configuration=Release;Version=$(PublishDriverVersion);OutputPath=$(PublishSimplBin)" />
   </Target>
 
 
   <!-- Publish Target -->
 
-  <Target Name="PostPublishDriver" AfterTargets="Publish">
+  <Target Name="CompileUspFile" AfterTargets="SimpllistCompile">
 
-    <Message Importance="high" Text="----> Compiling $(PublishDir)\$(AssemblyName).dll ----> $(PublishDir)" Condition="'$(IsCustomOutputPath)' == 'true'"/>
+    <Message Importance="high" Text="----> Compiling USP File in Directory $(PublishDir) ----> $(PublishDir)" Condition="'$(IsCustomOutputPath)' == 'true'"/>
 
   </Target>
 

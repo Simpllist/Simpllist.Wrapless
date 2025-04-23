@@ -3,6 +3,7 @@ using System.Text;
 using Cocona;
 using Microsoft.Extensions.Logging;
 using Simpllist.Builder;
+using Simpllist.Manifest;
 
 namespace Simpllist.Commands;
 
@@ -30,7 +31,12 @@ public sealed class BuildCommand
 
         builder.AppendInformationBuilder(assembly);
 
+        // TODO: Remove all this hard coded crap, this is 100% for proof of concept, the compiler will be executed for each module in the assembly and output files based on metadata
         await File.WriteAllTextAsync(Path.Combine(directory!.FullName, "blah.usp"), builder!.ToString());
-        
+
+        await Artifacts.SaveArtifactsFile(directory.FullName, [
+            new Artifact(Path.Combine(directory!.FullName, "blah.usp"))
+        ]);
+
     }
 }

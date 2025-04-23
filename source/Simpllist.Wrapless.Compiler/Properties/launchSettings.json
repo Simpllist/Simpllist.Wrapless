@@ -11,6 +11,10 @@
     "SimplPlus Create": {
       "commandName": "Project",
       "commandLineArgs": "build --path \"C:\\dev\\Simpllist.Wrapless\\example\\Simpllist.Wrapless.Module\\bin\\Debug\\net472\\Simpllist.Wrapless.Module.dll\""
+    },
+    "SimplPlus Clean": {
+      "commandName": "Project",
+      "commandLineArgs": "clean --directory \"C:\\dev\\Simpllist.Wrapless\\example\\Simpllist.Wrapless.Module\\bin\\Debug\\net472\""
     }
   }
 }
