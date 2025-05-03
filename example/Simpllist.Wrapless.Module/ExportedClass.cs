@@ -2,6 +2,7 @@
 
 namespace Simpllist;
 
+[Module("Simpllist.ExportedClass_Module")]
 public class ExportedClass
 {
     [Input]

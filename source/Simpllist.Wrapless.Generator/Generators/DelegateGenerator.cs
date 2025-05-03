@@ -1,10 +1,10 @@
 ﻿using Microsoft.CodeAnalysis;
-using Simpllist.Attributes;
+using Simpllist.Delegates;
 
 namespace Simpllist.Generators;
 
 [Generator(LanguageNames.CSharp)]
-public class AttributeGenerator : IIncrementalGenerator
+public class DelegateGenerator : IIncrementalGenerator
 {
 
     /// <inheritdoc />
@@ -15,8 +15,6 @@ public class AttributeGenerator : IIncrementalGenerator
 
     private static void PostInitializationCallback(IncrementalGeneratorPostInitializationContext context)
     {
-        context.AddSource(LibraryAssemblyAttribute.FileName, LibraryAssemblyAttribute.Value);
-        context.AddSource(ModuleAttribute.FileName, ModuleAttribute.Value);
-        context.AddSource(OutputDelegate.FileName, OutputDelegate.Value);
+        context.AddSource(OutputDelegates.FileName, OutputDelegates.Value);
     }
 }
