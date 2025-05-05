@@ -3,11 +3,10 @@
 namespace Simpllist;
 
 [Module("Simpllist.ExportedClass_Module")]
-public class ExportedClass
+public partial class ExportedClass
 {
     [Input]
     public void SetValue(bool value)
     {
-       
     }
 }

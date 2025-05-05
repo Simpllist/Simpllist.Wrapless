@@ -17,6 +17,6 @@ public class AttributeGenerator : IIncrementalGenerator
     {
         context.AddSource(LibraryAssemblyAttribute.FileName, LibraryAssemblyAttribute.Value);
         context.AddSource(ModuleAttribute.FileName, ModuleAttribute.Value);
-        context.AddSource(OutputDelegate.FileName, OutputDelegate.Value);
+        context.AddSource(InputAttribute.FileName, InputAttribute.Value);
     }
 }
